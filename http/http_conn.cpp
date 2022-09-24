@@ -85,7 +85,6 @@ void modfd(int epollfd, int fd, int ev, int TRIGMode)
 {
     epoll_event event;
     event.data.fd = fd;
-
     if (1 == TRIGMode)
         event.events = ev | EPOLLET | EPOLLONESHOT | EPOLLRDHUP;
     else
@@ -102,7 +101,7 @@ void http_conn::close_conn(bool real_close)
 {
     if (real_close && (m_sockfd != -1))
     {
-        printf("close %d\n", m_sockfd);
+        printf("thread %d: close %d\n",gettid(), m_sockfd);
         removefd(m_epollfd, m_sockfd);
         m_sockfd = -1;
         m_user_count--;
@@ -349,6 +348,8 @@ http_conn::HTTP_CODE http_conn::process_read()
     {
         text = get_line();
         m_start_line = m_checked_idx;
+        printf("thread %d: got 1 http line: %s\n", gettid(), text);
+
         LOG_INFO("%s", text);
         switch (m_check_state)
         {
@@ -531,7 +532,7 @@ bool http_conn::write()
         init();
         return true;
     }
-
+    printf("thread %d: send response to client %d:\n%s\n",gettid(),m_sockfd,m_write_buf);
     while (1)
     {
         temp = writev(m_sockfd, m_iv, m_iv_count);
@@ -640,10 +641,20 @@ bool http_conn::process_write(HTTP_CODE ret)
     }
     case BAD_REQUEST:
     {
-        add_status_line(404, error_404_title);
+        add_status_line(400, error_404_title);
         add_headers(strlen(error_404_form));
         if (!add_content(error_404_form))
             return false;
+        break;
+    }
+    case NO_RESOURCE:
+    {
+        add_status_line(404, error_404_title);
+        add_headers(strlen(error_404_form));
+        if (!add_content(error_404_form))
+        {
+            return false;
+        }
         break;
     }
     case FORBIDDEN_REQUEST:
@@ -687,7 +698,9 @@ bool http_conn::process_write(HTTP_CODE ret)
 }
 void http_conn::process()
 {
+    printf("thread %d: processing, socket: %d\n", gettid(), m_sockfd);
     HTTP_CODE read_ret = process_read();
+    printf("thread %d: get request HTTP_CODE:%d\n",gettid(),read_ret);
     if (read_ret == NO_REQUEST)
     {
         modfd(m_epollfd, m_sockfd, EPOLLIN, m_TRIGMode);
@@ -698,5 +711,6 @@ void http_conn::process()
     {
         close_conn();
     }
+    printf("thread %d: writeable, sign EPOLLOUT to %d\n",gettid(),m_sockfd);
     modfd(m_epollfd, m_sockfd, EPOLLOUT, m_TRIGMode);
 }

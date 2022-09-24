@@ -1,0 +1,7 @@
+define plist
+    set var $p = $arg0
+    while $p 
+        p $p->user_data->sockfd
+        set var $p = $p->next
+    end
+end

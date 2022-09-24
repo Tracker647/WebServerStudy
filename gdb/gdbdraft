@@ -1,0 +1,3 @@
+-exec set $head = timer
+telnet 47.99.137.171 9006
+

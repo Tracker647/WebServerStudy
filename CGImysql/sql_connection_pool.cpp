@@ -34,29 +34,40 @@ void connection_pool::init(string url, string User, string PassWord, string DBNa
 
 	for (int i = 0; i < MaxConn; i++)
 	{
-		MYSQL *con = NULL;
-		con = mysql_init(con);
+		MYSQL* con = NULL;
+		MYSQL* ret = NULL;
 
-		if (con == NULL)
+		ret = mysql_init(con);
+		if (ret == NULL)
 		{
-			LOG_ERROR("MySQL Error");
+          // 如果mysql_init()返回空，那就打印该信息
+			LOG_ERROR("MySQL Error: mysql_init() returns NULL");
 			exit(1);
+		} else {
+			con = ret;
 		}
-		con = mysql_real_connect(con, url.c_str(), User.c_str(), PassWord.c_str(), DBName.c_str(), Port, NULL, 0);
 
-		if (con == NULL)
+		ret = mysql_real_connect(con, url.c_str(), User.c_str(), PassWord.c_str(), DBName.c_str(), Port, NULL, 0);
+		if (ret == NULL)
 		{
-			LOG_ERROR("MySQL Error");
+          // 如果mysql_real_connect()返回空，那就使用mysql_errorh和mysql_errno打印具体的出错信息
+			string err_info( mysql_error(con) );
+			err_info = (string("MySQL Error[errno=")
+				+ std::to_string(mysql_errno(con)) + string("]: ") + err_info);
+			LOG_ERROR( err_info.c_str() );
 			exit(1);
+		} else {
+			con = ret;
 		}
+
 		connList.push_back(con);
 		++m_FreeConn;
 	}
 
 	reserve = sem(m_FreeConn);
-
 	m_MaxConn = m_FreeConn;
 }
+
 
 
 //当有请求时，从数据库连接池中返回一个可用连接，更新使用和空闲连接数

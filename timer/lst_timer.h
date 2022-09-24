@@ -24,27 +24,27 @@
 #include <time.h>
 #include "../log/log.h"
 
-class util_timer;
+class client_timer;
 
 struct client_data
 {
     sockaddr_in address;
     int sockfd;
-    util_timer *timer;
+    client_timer *timer;
 };
 
-class util_timer
+class client_timer
 {
 public:
-    util_timer() : prev(NULL), next(NULL) {}
+    client_timer() : prev(NULL), next(NULL) {}
 
 public:
     time_t expire;
     
-    void (* cb_func)(client_data *);
+    void (*cb_func)(client_data *);
     client_data *user_data;
-    util_timer *prev;
-    util_timer *next;
+    client_timer *prev;
+    client_timer *next;
 };
 
 class sort_timer_lst
@@ -53,16 +53,17 @@ public:
     sort_timer_lst();
     ~sort_timer_lst();
 
-    void add_timer(util_timer *timer);
-    void adjust_timer(util_timer *timer);
-    void del_timer(util_timer *timer);
+    void add_timer(client_timer *timer);
+    void adjust_timer(client_timer *timer);
+    void del_timer(client_timer *timer);
+    void print_timer();
     void tick();
 
 private:
-    void add_timer(util_timer *timer, util_timer *lst_head);
+    void add_timer(client_timer *timer, client_timer *lst_head);
 
-    util_timer *head;
-    util_timer *tail;
+    client_timer *head;
+    client_timer *tail;
 };
 
 class Utils

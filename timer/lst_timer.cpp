@@ -1,5 +1,8 @@
 #include "lst_timer.h"
 #include "../http/http_conn.h"
+#define DEBUG 1
+int *Utils::u_pipefd = 0;
+int Utils::u_epollfd = 0;
 
 sort_timer_lst::sort_timer_lst()
 {
@@ -8,7 +11,7 @@ sort_timer_lst::sort_timer_lst()
 }
 sort_timer_lst::~sort_timer_lst()
 {
-    util_timer *tmp = head;
+    client_timer *tmp = head;
     while (tmp)
     {
         head = tmp->next;
@@ -17,8 +20,8 @@ sort_timer_lst::~sort_timer_lst()
     }
 }
 
-void sort_timer_lst::add_timer(util_timer *timer)
-{
+void sort_timer_lst::add_timer(client_timer *timer)
+{   
     if (!timer)
     {
         return;
@@ -26,6 +29,10 @@ void sort_timer_lst::add_timer(util_timer *timer)
     if (!head)
     {
         head = tail = timer;
+        printf("now timer_lst:\n");
+        #if DEBUG 
+            print_timer();
+        #endif
         return;
     }
     if (timer->expire < head->expire)
@@ -33,17 +40,20 @@ void sort_timer_lst::add_timer(util_timer *timer)
         timer->next = head;
         head->prev = timer;
         head = timer;
+        #if DEBUG 
+            print_timer();
+        #endif
         return;
     }
     add_timer(timer, head);
 }
-void sort_timer_lst::adjust_timer(util_timer *timer)
+void sort_timer_lst::adjust_timer(client_timer *timer)
 {
     if (!timer)
     {
         return;
     }
-    util_timer *tmp = timer->next;
+    client_timer *tmp = timer->next;
     if (!tmp || (timer->expire < tmp->expire))
     {
         return;
@@ -62,8 +72,8 @@ void sort_timer_lst::adjust_timer(util_timer *timer)
         add_timer(timer, timer->next);
     }
 }
-void sort_timer_lst::del_timer(util_timer *timer)
-{
+void sort_timer_lst::del_timer(client_timer *timer)
+{   
     if (!timer)
     {
         return;
@@ -73,6 +83,9 @@ void sort_timer_lst::del_timer(util_timer *timer)
         delete timer;
         head = NULL;
         tail = NULL;
+        #if DEBUG 
+            print_timer();
+        #endif
         return;
     }
     if (timer == head)
@@ -80,6 +93,9 @@ void sort_timer_lst::del_timer(util_timer *timer)
         head = head->next;
         head->prev = NULL;
         delete timer;
+        #if DEBUG 
+            print_timer();
+        #endif
         return;
     }
     if (timer == tail)
@@ -87,12 +103,26 @@ void sort_timer_lst::del_timer(util_timer *timer)
         tail = tail->prev;
         tail->next = NULL;
         delete timer;
+        #if DEBUG 
+            print_timer();
+        #endif
         return;
     }
     timer->prev->next = timer->next;
     timer->next->prev = timer->prev;
     delete timer;
 }
+
+void sort_timer_lst::print_timer(){
+    client_timer *p = head;
+    printf("now timer_lst:\n");
+    while(p){
+        printf("[sock=%d,exp=%ld]->",p->user_data->sockfd,p->expire);
+        p = p->next;
+    }
+    printf("\n");
+}
+
 void sort_timer_lst::tick()
 {
     if (!head)
@@ -101,7 +131,7 @@ void sort_timer_lst::tick()
     }
     
     time_t cur = time(NULL);
-    util_timer *tmp = head;
+    client_timer *tmp = head;
     while (tmp)
     {
         if (cur < tmp->expire)
@@ -119,10 +149,10 @@ void sort_timer_lst::tick()
     }
 }
 
-void sort_timer_lst::add_timer(util_timer *timer, util_timer *lst_head)
+void sort_timer_lst::add_timer(client_timer *timer, client_timer *lst_head)
 {
-    util_timer *prev = lst_head;
-    util_timer *tmp = prev->next;
+    client_timer *prev = lst_head;
+    client_timer *tmp = prev->next;
     while (tmp)
     {
         if (timer->expire < tmp->expire)
@@ -131,6 +161,10 @@ void sort_timer_lst::add_timer(util_timer *timer, util_timer *lst_head)
             timer->next = tmp;
             tmp->prev = timer;
             timer->prev = prev;
+            printf("now timer_lst:\n");
+            #if DEBUG 
+                print_timer();
+            #endif
             break;
         }
         prev = tmp;
@@ -142,6 +176,10 @@ void sort_timer_lst::add_timer(util_timer *timer, util_timer *lst_head)
         timer->prev = prev;
         timer->next = NULL;
         tail = timer;
+        printf("now timer_lst:\n");
+        #if DEBUG 
+            print_timer();
+        #endif
     }
 }
 
@@ -211,12 +249,10 @@ void Utils::show_error(int connfd, const char *info)
     close(connfd);
 }
 
-int *Utils::u_pipefd = 0;
-int Utils::u_epollfd = 0;
 
-class Utils;
 void cb_func(client_data *user_data)
-{
+{   
+    printf("timeout close %d\n",user_data->sockfd);
     epoll_ctl(Utils::u_epollfd, EPOLL_CTL_DEL, user_data->sockfd, 0);
     assert(user_data);
     close(user_data->sockfd);

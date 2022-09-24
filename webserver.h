@@ -35,13 +35,13 @@ public:
     void trig_mode();
     void eventListen();
     void eventLoop();
-    void timer(int connfd, struct sockaddr_in client_address);
-    void adjust_timer(util_timer *timer);
-    void deal_timer(util_timer *timer, int sockfd);
-    bool dealclinetdata();
-    bool dealwithsignal(bool& timeout, bool& stop_server);
-    void dealwithread(int sockfd);
-    void dealwithwrite(int sockfd);
+    void sign_timer(int connfd, struct sockaddr_in client_address);
+    void adjust_timer(client_timer *timer);
+    void deal_client_timer(client_timer *timer, int sockfd);
+    bool deal_client_conn();
+    bool deal_with_signal(bool& timeout, bool& stop_server);
+    void deal_with_read(int sockfd);
+    void deal_with_write(int sockfd);
 
 public:
     //基础

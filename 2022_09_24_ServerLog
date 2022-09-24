@@ -1,0 +1,192 @@
+2022-09-24 20:08:36.240543 [info]: timer tick
+2022-09-24 20:08:39.454272 [info]: deal with the client(111.18.245.119)
+2022-09-24 20:08:39.454342 [info]: adjust timer once
+2022-09-24 20:08:39.454484 [info]: GET / HTTP/1.1
+2022-09-24 20:08:39.454511 [info]: Host: 47.99.137.171:9006
+2022-09-24 20:08:39.454525 [info]: Connection: keep-alive
+2022-09-24 20:08:39.454537 [info]: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:39.454545 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:39.454557 [info]: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:39.454565 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:39.454579 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:39.454596 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:39.454607 [info]: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:39.454614 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:39.454624 [info]: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:39.454632 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:39.454646 [info]: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:39.454659 [info]: oop!unknow header: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:39.454670 [info]: 
+2022-09-24 20:08:39.454702 [info]: request:HTTP/1.1 200 OK
+
+2022-09-24 20:08:39.454716 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+
+2022-09-24 20:08:39.454725 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+
+2022-09-24 20:08:39.454732 [info]: request:HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+
+
+2022-09-24 20:08:39.454808 [info]: send data to the client(111.18.245.119)
+2022-09-24 20:08:39.454820 [info]: adjust timer once
+2022-09-24 20:08:39.841722 [info]: deal with the client(111.18.245.119)
+2022-09-24 20:08:39.841801 [info]: adjust timer once
+2022-09-24 20:08:39.841900 [info]: GET /favicon.ico HTTP/1.1
+2022-09-24 20:08:39.841921 [info]: Host: 47.99.137.171:9006
+2022-09-24 20:08:39.841935 [info]: Connection: keep-alive
+2022-09-24 20:08:39.841952 [info]: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:39.841960 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:39.841974 [info]: Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+2022-09-24 20:08:39.841983 [info]: oop!unknow header: Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+2022-09-24 20:08:39.841996 [info]: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:39.842004 [info]: oop!unknow header: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:39.842017 [info]: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:39.842027 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:39.842041 [info]: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:39.842049 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:39.842084 [info]: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:39.842097 [info]: oop!unknow header: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:39.842111 [info]: 
+2022-09-24 20:08:39.842150 [info]: request:HTTP/1.1 200 OK
+
+2022-09-24 20:08:39.842164 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+
+2022-09-24 20:08:39.842171 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+Connection:keep-alive
+
+2022-09-24 20:08:39.842179 [info]: request:HTTP/1.1 200 OK
+Content-Length:4286
+Connection:keep-alive
+
+
+2022-09-24 20:08:39.842289 [info]: send data to the client(111.18.245.119)
+2022-09-24 20:08:39.842303 [info]: adjust timer once
+2022-09-24 20:08:41.240600 [info]: timer tick
+2022-09-24 20:08:42.166790 [info]: deal with the client(111.18.245.119)
+2022-09-24 20:08:42.166889 [info]: adjust timer once
+2022-09-24 20:08:42.166966 [info]: POST /1 HTTP/1.1
+2022-09-24 20:08:42.166983 [info]: Host: 47.99.137.171:9006
+2022-09-24 20:08:42.166997 [info]: Connection: keep-alive
+2022-09-24 20:08:42.167009 [info]: Content-Length: 0
+2022-09-24 20:08:42.167020 [info]: Cache-Control: max-age=0
+2022-09-24 20:08:42.167026 [info]: oop!unknow header: Cache-Control: max-age=0
+2022-09-24 20:08:42.167038 [info]: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:42.167046 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:42.167058 [info]: Origin: http://47.99.137.171:9006
+2022-09-24 20:08:42.167068 [info]: oop!unknow header: Origin: http://47.99.137.171:9006
+2022-09-24 20:08:42.167089 [info]: Content-Type: application/x-www-form-urlencoded
+2022-09-24 20:08:42.167101 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2022-09-24 20:08:42.167116 [info]: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:42.167124 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:42.167139 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:42.167150 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:42.167161 [info]: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:42.167168 [info]: oop!unknow header: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:42.167178 [info]: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:42.167185 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:42.167195 [info]: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:42.167203 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:42.167218 [info]: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:42.167231 [info]: oop!unknow header: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:42.167257 [info]: 
+2022-09-24 20:08:42.167295 [info]: request:HTTP/1.1 200 OK
+
+2022-09-24 20:08:42.167308 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+
+2022-09-24 20:08:42.167316 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+
+2022-09-24 20:08:42.167324 [info]: request:HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+
+
+2022-09-24 20:08:42.167423 [info]: send data to the client(111.18.245.119)
+2022-09-24 20:08:42.167434 [info]: adjust timer once
+2022-09-24 20:08:46.080045 [info]: deal with the client(111.18.245.119)
+2022-09-24 20:08:46.080140 [info]: adjust timer once
+2022-09-24 20:08:46.080241 [info]: POST /0 HTTP/1.1
+2022-09-24 20:08:46.080263 [info]: Host: 47.99.137.171:9006
+2022-09-24 20:08:46.080276 [info]: Connection: keep-alive
+2022-09-24 20:08:46.080288 [info]: Content-Length: 0
+2022-09-24 20:08:46.080301 [info]: Cache-Control: max-age=0
+2022-09-24 20:08:46.080308 [info]: oop!unknow header: Cache-Control: max-age=0
+2022-09-24 20:08:46.080321 [info]: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:46.080328 [info]: oop!unknow header: Upgrade-Insecure-Requests: 1
+2022-09-24 20:08:46.080340 [info]: Origin: http://47.99.137.171:9006
+2022-09-24 20:08:46.080348 [info]: oop!unknow header: Origin: http://47.99.137.171:9006
+2022-09-24 20:08:46.080359 [info]: Content-Type: application/x-www-form-urlencoded
+2022-09-24 20:08:46.080367 [info]: oop!unknow header: Content-Type: application/x-www-form-urlencoded
+2022-09-24 20:08:46.080379 [info]: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:46.080387 [info]: oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+2022-09-24 20:08:46.080416 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:46.080424 [info]: oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-09-24 20:08:46.080435 [info]: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:46.080443 [info]: oop!unknow header: Referer: http://47.99.137.171:9006/
+2022-09-24 20:08:46.080454 [info]: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:46.080585 [info]: oop!unknow header: Accept-Encoding: gzip, deflate
+2022-09-24 20:08:46.080601 [info]: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:46.080609 [info]: oop!unknow header: Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+2022-09-24 20:08:46.080627 [info]: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:46.080641 [info]: oop!unknow header: Cookie: request_token=UawD52UKogXZEJJPKTwMSkEOR5EXkm8YIOpSWajqDHsjSDyT; order=id%20desc; serverType=nginx; pro_end=-1; ltd_end=-1; memSize=3931; bt_user_info=%7B%22status%22%3Atrue%2C%22msg%22%3A%22%u83B7%u53D6%u6210%u529F%21%22%2C%22data%22%3A%7B%22username%22%3A%22151****9080%22%7D%7D
+2022-09-24 20:08:46.080652 [info]: 
+2022-09-24 20:08:46.080692 [info]: request:HTTP/1.1 200 OK
+
+2022-09-24 20:08:46.080706 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+
+2022-09-24 20:08:46.080715 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+Connection:keep-alive
+
+2022-09-24 20:08:46.080722 [info]: request:HTTP/1.1 200 OK
+Content-Length:724
+Connection:keep-alive
+
+
+2022-09-24 20:08:46.080814 [info]: send data to the client(111.18.245.119)
+2022-09-24 20:08:46.080826 [info]: adjust timer once
+2022-09-24 20:08:46.240649 [info]: timer tick
+2022-09-24 20:08:46.875800 [info]: timeout close fd 16
+2022-09-24 20:08:51.240707 [info]: timer tick
+2022-09-24 20:08:56.240756 [info]: timer tick
+2022-09-24 20:09:01.240809 [info]: timer tick
+2022-09-24 20:09:06.240865 [info]: timer tick
+2022-09-24 20:09:11.240917 [info]: timer tick
+2022-09-24 20:09:16.240973 [info]: timer tick
+2022-09-24 20:09:21.241034 [info]: timer tick
+2022-09-24 20:09:26.241091 [info]: timer tick
+2022-09-24 20:09:31.241147 [info]: timer tick
+2022-09-24 20:09:36.241218 [info]: timer tick
+2022-09-24 20:09:41.241271 [info]: timer tick
+2022-09-24 20:09:46.241333 [info]: timer tick
+2022-09-24 20:09:51.241381 [info]: timer tick
+2022-09-24 20:09:56.241458 [info]: timer tick
+2022-09-24 20:10:01.241514 [info]: timer tick
+2022-09-24 20:10:06.241572 [info]: timer tick
+2022-09-24 20:10:11.241630 [info]: timer tick
+2022-09-24 20:10:16.241686 [info]: timer tick
+2022-09-24 20:10:21.241748 [info]: timer tick
+2022-09-24 20:10:26.241815 [info]: timer tick
+2022-09-24 20:10:31.241875 [info]: timer tick
+2022-09-24 20:10:36.241931 [info]: timer tick
+2022-09-24 20:10:41.241992 [info]: timer tick
+2022-09-24 20:10:46.242033 [info]: timer tick
+2022-09-24 20:10:51.242089 [info]: timer tick
+2022-09-24 20:10:56.242148 [info]: timer tick
+2022-09-24 20:11:01.242206 [info]: timer tick
+2022-09-24 20:11:06.242263 [info]: timer tick
+2022-09-24 20:11:11.242322 [info]: timer tick
+2022-09-24 20:11:16.242376 [info]: timer tick
+2022-09-24 20:11:21.242440 [info]: timer tick
+2022-09-24 20:11:26.242505 [info]: timer tick
+2022-09-24 20:11:31.242559 [info]: timer tick
+2022-09-24 20:11:36.242616 [info]: timer tick
