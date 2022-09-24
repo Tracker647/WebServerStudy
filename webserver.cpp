@@ -172,7 +172,7 @@ void WebServer::sign_timer(int connfd, struct sockaddr_in client_address)
     time_t cur = time(NULL);
     timer->expire = cur + 3 * TIMESLOT;
     users_timer[connfd].timer = timer;
-    printf("add new timer: [sock=%d,exp=%ld]\n", connfd, timer->expire);
+    LOG_DEBUG("add new timer: [sock=%d,exp=%ld]\n", connfd, timer->expire);
     utils.m_timer_lst.add_timer(timer);
 }
 
@@ -205,7 +205,7 @@ bool WebServer::deal_client_conn()
     if (0 == m_LISTENTrigmode)
     {
         int connfd = accept(m_listenfd, (struct sockaddr *)&client_address, &client_addrlength);
-        printf("main: LT bulid connection %d\n", connfd);
+        LOG_DEBUG("main: LT bulid connection %d\n", connfd);
         if (connfd < 0)
         {
             LOG_ERROR("%s:errno is:%d", "accept error", errno);
@@ -225,7 +225,7 @@ bool WebServer::deal_client_conn()
         while (1)
         {
             int connfd = accept(m_listenfd, (struct sockaddr *)&client_address, &client_addrlength);
-            printf("main: ET bulid connection %d\n", connfd);
+            LOG_DEBUG("main: ET bulid connection %d\n", connfd);
             if (connfd < 0)
             {
                 LOG_ERROR("%s:errno is:%d", "accept error", errno);
@@ -396,7 +396,7 @@ void WebServer::eventLoop()
             //处理新到的客户连接
             if (sockfd == m_listenfd)
             {
-                printf("main %d: deal client data\n", gettid());
+                LOG_DEBUG("main %d: deal client data\n", gettid());
                 bool flag = deal_client_conn();
                 if (false == flag)
                     continue;
@@ -417,12 +417,12 @@ void WebServer::eventLoop()
             //处理客户连接上接收到的数据
             else if (events[i].events & EPOLLIN)
             {
-                printf("main %d: EPOLLIN detected, deal with read\n", gettid());
+                LOG_DEBUG("main %d: EPOLLIN detected, deal with read\n", gettid());
                 deal_with_read(sockfd);
             }
             else if (events[i].events & EPOLLOUT)
             {
-                printf("main %d: EPOLLOUT detected, deal with read\n", gettid());
+                LOG_DEBUG("main %d: EPOLLOUT detected, deal with read\n", gettid());
                 deal_with_write(sockfd);
             }
         }

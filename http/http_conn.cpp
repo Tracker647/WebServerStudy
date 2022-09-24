@@ -101,7 +101,7 @@ void http_conn::close_conn(bool real_close)
 {
     if (real_close && (m_sockfd != -1))
     {
-        printf("thread %d: close %d\n",gettid(), m_sockfd);
+        // LOG_DEBUG("thread %d: close %d\n",gettid(), m_sockfd);
         removefd(m_epollfd, m_sockfd);
         m_sockfd = -1;
         m_user_count--;
@@ -348,7 +348,7 @@ http_conn::HTTP_CODE http_conn::process_read()
     {
         text = get_line();
         m_start_line = m_checked_idx;
-        printf("thread %d: got 1 http line: %s\n", gettid(), text);
+        // LOG_DEBUG("thread %d: got 1 http line: %s\n", gettid(), text);
 
         LOG_INFO("%s", text);
         switch (m_check_state)
@@ -390,7 +390,7 @@ http_conn::HTTP_CODE http_conn::do_request()
 {
     strcpy(m_real_file, doc_root);
     int len = strlen(doc_root);
-    //printf("m_url:%s\n", m_url);
+    LOG_DEBUG("m_url:%s\n", m_url);
     const char *p = strrchr(m_url, '/');
 
     //处理cgi
@@ -532,7 +532,7 @@ bool http_conn::write()
         init();
         return true;
     }
-    printf("thread %d: send response to client %d:\n%s\n",gettid(),m_sockfd,m_write_buf);
+    // LOG_DEBUG("thread %d: send response to client %d:\n%s\n",gettid(),m_sockfd,m_write_buf);
     while (1)
     {
         temp = writev(m_sockfd, m_iv, m_iv_count);
@@ -698,9 +698,9 @@ bool http_conn::process_write(HTTP_CODE ret)
 }
 void http_conn::process()
 {
-    printf("thread %d: processing, socket: %d\n", gettid(), m_sockfd);
+    // LOG_DEBUG("thread %d: processing, socket: %d\n", gettid(), m_sockfd);
     HTTP_CODE read_ret = process_read();
-    printf("thread %d: get request HTTP_CODE:%d\n",gettid(),read_ret);
+    // LOG_DEBUG("thread %d: get request HTTP_CODE:%d\n",gettid(),read_ret);
     if (read_ret == NO_REQUEST)
     {
         modfd(m_epollfd, m_sockfd, EPOLLIN, m_TRIGMode);
@@ -711,6 +711,6 @@ void http_conn::process()
     {
         close_conn();
     }
-    printf("thread %d: writeable, sign EPOLLOUT to %d\n",gettid(),m_sockfd);
+    // LOG_DEBUG("thread %d: writeable, sign EPOLLOUT to %d\n",gettid(),m_sockfd);
     modfd(m_epollfd, m_sockfd, EPOLLOUT, m_TRIGMode);
 }

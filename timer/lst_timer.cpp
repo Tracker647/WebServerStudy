@@ -29,7 +29,7 @@ void sort_timer_lst::add_timer(client_timer *timer)
     if (!head)
     {
         head = tail = timer;
-        printf("now timer_lst:\n");
+        // LOG_DEBUG("now timer_lst:\n");
         #if DEBUG 
             print_timer();
         #endif
@@ -115,12 +115,12 @@ void sort_timer_lst::del_timer(client_timer *timer)
 
 void sort_timer_lst::print_timer(){
     client_timer *p = head;
-    printf("now timer_lst:\n");
+    // LOG_DEBUG("now timer_lst:\n");
     while(p){
-        printf("[sock=%d,exp=%ld]->",p->user_data->sockfd,p->expire);
+        // LOG_DEBUG("[sock=%d,exp=%ld]->",p->user_data->sockfd,p->expire);
         p = p->next;
     }
-    printf("\n");
+    // LOG_DEBUG("\n");
 }
 
 void sort_timer_lst::tick()
@@ -161,7 +161,7 @@ void sort_timer_lst::add_timer(client_timer *timer, client_timer *lst_head)
             timer->next = tmp;
             tmp->prev = timer;
             timer->prev = prev;
-            printf("now timer_lst:\n");
+            // LOG_DEBUG("now timer_lst:\n");
             #if DEBUG 
                 print_timer();
             #endif
@@ -176,7 +176,7 @@ void sort_timer_lst::add_timer(client_timer *timer, client_timer *lst_head)
         timer->prev = prev;
         timer->next = NULL;
         tail = timer;
-        printf("now timer_lst:\n");
+        // LOG_DEBUG("now timer_lst:\n");
         #if DEBUG 
             print_timer();
         #endif
@@ -252,7 +252,7 @@ void Utils::show_error(int connfd, const char *info)
 
 void cb_func(client_data *user_data)
 {   
-    printf("timeout close %d\n",user_data->sockfd);
+    // LOG_DEBUG("timeout close %d\n",user_data->sockfd);
     epoll_ctl(Utils::u_epollfd, EPOLL_CTL_DEL, user_data->sockfd, 0);
     assert(user_data);
     close(user_data->sockfd);

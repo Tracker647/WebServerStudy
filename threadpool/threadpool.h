@@ -64,7 +64,7 @@ template <typename T>
 bool threadpool<T>::append(T *request, int state)
 {
     m_queuelocker.lock();
-    printf("main %d: append request to pool in reactor model\n",gettid());
+    // LOG_DEBUG("main %d: append request to pool in reactor model\n",gettid());
     if (m_workqueue.size() >= m_max_requests)
     {
         m_queuelocker.unlock();
@@ -80,7 +80,7 @@ template <typename T>
 bool threadpool<T>::append_p(T *request)
 {
     m_queuelocker.lock();
-    printf("main %d: append request to pool in proactor model\n",gettid());
+    // LOG_DEBUG("main %d: append request to pool in proactor model\n",gettid());
     if (m_workqueue.size() >= m_max_requests)
     {
         m_queuelocker.unlock();
@@ -112,7 +112,7 @@ void threadpool<T>::run()
         }
         T *request = m_workqueue.front();
         m_workqueue.pop_front();
-        printf("thread %d: request fetched\n",gettid());
+        // LOG_DEBUG("thread %d: request fetched\n",gettid());
         m_queuelocker.unlock();
         if (!request)
             continue;
@@ -120,7 +120,7 @@ void threadpool<T>::run()
         {   
             if (0 == request->m_state)
             {
-                printf("thread %d: reactor, read request to m_read_buf\n",gettid());
+                // LOG_DEBUG("thread %d: reactor, read request to m_read_buf\n",gettid());
                 if (request->read_once())
                 {
                     request->improv = 1;
@@ -135,7 +135,7 @@ void threadpool<T>::run()
             }
             else
             {            
-                printf("thread %d: reactor, write response to server\n",gettid());
+                // LOG_DEBUG("thread %d: reactor, write response to server\n",gettid());
                 if (request->write())
                 {
                     request->improv = 1;
@@ -150,7 +150,7 @@ void threadpool<T>::run()
         else
         {
             connectionRAII mysqlcon(&request->mysql, m_connPool);
-            printf("thread %d: proactor, start processing...\n",gettid());
+            // LOG_DEBUG("thread %d: proactor, start processing...\n",gettid());
             request->process();
         }
     }
